@@ -6,27 +6,30 @@ public class Question4 {
         double currentWeight = 0.0;
         int packageCount = 0;
         while (currentWeight < weightLimit){
-            System.out.print("Please enter the weight of the package: ");
+            System.out.print("Enter the weight of the package: ");
             double weight = scanner.nextDouble();
             if (weight == -1){
-                System.out.println("Ending........");
+                System.out.println("Ending...");
                 break;
             }
-            else if (weight > (weightLimit-currentWeight)){
-                System.out.println("Package too heavy");
+            else if ((currentWeight + weight) > weightLimit){
+                System.out.println("Package too heavy! Truck only has " + (weightLimit -currentWeight) + " kg of space left.");
+
             }
-            else if (weight <= (weightLimit-currentWeight)){
+            else{
                 currentWeight += weight;
                 packageCount += 1;
-                System.out.println("Package Added");
+                System.out.println("Load added!");
+                if (currentWeight == weightLimit){
+                    System.out.println("TRUCK AT MAXIMUM CAPACITY");
+                }
+
             }
-            else if (currentWeight == weightLimit){
-                System.out.println("TRUCK AT MAXIMUM CAPACITY");
-                break;
-            }
+
         }
-        System.out.println("We loaded a total of " + packageCount + " packages");
-        System.out.println("The final weight is " + currentWeight);
+        System.out.println("Total Packages: " + packageCount);
+        System.out.println("Total Weight: " + currentWeight);
         scanner.close();
+
     }
 }

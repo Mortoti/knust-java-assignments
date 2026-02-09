@@ -1,27 +1,27 @@
 public class Question2 {
     public static void main(String [] args){
-        int [] stockLevels = {9,45,8,100,3,25};
+        int [] stockLevels = {12, 45, 8, 100, 3, 25};
         int reorderCount = 0;
         int totalStock = 0;
 
-        for (int i = 0; i <=5; i ++){
+
+        for (int i = 0; i < stockLevels.length; i ++){
             int currentStock = stockLevels[i];
             if (currentStock < 10){
-                System.out.println("Item " + (i + 1) + ": " +currentStock + " units");
-                System.out.println("CRITICAL: Reorder Immediately");
+                System.out.println("Item "+ (i+1) + ": " + currentStock + " units - CRITICAL: Reorder\n" +
+                        "immediately!");
                 reorderCount += 1;
                 totalStock += currentStock;
-
             }
-            else if (currentStock >= 10){
+            else{
                 System.out.println("Item " + (i + 1) + ": " + currentStock + " units - Stable");
                 totalStock += currentStock;
-
             }
 
+
         }
-        System.out.println("The total number of items in the warehouse is: " + totalStock);
-        System.out.println("The total number of items we need to reorder is: " + reorderCount);
+        System.out.println("Total Items: " + totalStock);
+        System.out.println("Reorder Items: " + reorderCount);
 
     }
 }
